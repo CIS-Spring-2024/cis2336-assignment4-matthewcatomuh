@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>The SugarLand Cafe</h1>
+    </header>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Meet The Owner</a>
+        <a href="cart.html" class="active">Cart</a>
+    </div>
+
+    <h2>Cart</h2>
+    <div id="cart-items"></div>
+    <p id="cart-total">Total: $0.00</p>
+
+    <footer>
+        <p>&copy; 2024 SugarLand Cafe. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:contact@thesugarlandcafe.com">contact@thesugarlandcafe.com</a>.</p>
+    </footer>
+    <script>
+        function updateCart() {
+            fetch('/cart')
+                .then(response => response.json())
+                .then(data => {
+                    const cartItemsContainer = document.getElementById("cart-items");
+                    const cartTotal = document.getElementById("cart-total");
+
+                    cartItemsContainer.innerHTML = "";
+
+                    data.cartItems.forEach(item => {
+                        const cartItem = document.createElement("div");
+                        cartItem.classList.add("cart-item");
+                        cartItem.textContent = `${item.itemName} x ${item.quantity}`;
+                        cartItemsContainer.appendChild(cartItem);
+                    });
+
+                    cartTotal.textContent = `Total: $${data.cartTotal.toFixed(2)}`;
+                })
+                .catch(error => {
+                    console.error("Error fetching cart data:", error);
+                });
+        }
+
+        updateCart();
+        document.getElementById('food-order-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const itemName = document.getElementById('item-select').value.split(': $')[0];
+            const quantity = parseInt(document.getElementById('quantity-input').value);
+            const price = parseFloat(document.getElementById('item-select').value.split(': $')[1]);
+
+            fetch('/submit-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ itemName, quantity, price }),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        updateCart();
+                        alert('Item added to cart');
+                    } else {
+                        throw new Error('Failed to add item to cart');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error adding item to cart:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>

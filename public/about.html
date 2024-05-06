@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Meet the Owner!</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<style>
+    img.custom:hover,
+    img.custom:focus {
+        transition: .2s;
+        transform: scale(1.5);
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Meet the Owner!</h1>
+    </header>
+
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html" class="active">Meet The Owner</a>
+        <a href="cart.html">Cart</a>
+    </div>
+
+    <div class="container">
+        <h2>The SugarLand Cafe</h2>
+        <p>Welcome to <strong>The Sugarland Cafe</strong>!
+            Here we are the premier food provider of the <br> Sugarland Campus.<img class="custom" src="images/college_dining.jpg"
+                alt="college_dining" align="right">
+            I opened this Cafe because when I was a student here I believed <br>
+            that chips and coffee were not enough food options to feed the nurses,
+            technology,<br>and Wharton County Junior College students.
+            You must be wondering, <Br>"That's all well and good but, who am I?"<br><br>
+        </p>
+        <h3>Who Am I?</h3>
+        <p>Hi, my name is Matt, a student at the University of Houston Cullen College of Engineering.
+            <br> I opened this cafe to provide myself and others with the proper nutrients <img class="custom"
+                src="images/owner.jpg" alt="owner" align="right" style="position:relative; right:300px;"><br>
+            to lead a healthy lifestyle.<br><br>
+        </p>
+        <h3>It's Time to <strong>Eat</strong>.</h3>
+        <p>Use this link <a href="index.html"><strong>Home</strong></a> to go to our homepage!<br>
+            Here we showcase just some of our many options ranging from <br>
+            classics such as hot dogs and pizza to food offered by our partners <br>
+            McDonald's and Panda Express who feature at the UH main campus<br>
+            and Nando's a new addition to our food partners at UH!<br><br>
+        <h4>Comments, Questions, Concerns?</h4>
+        <p>Customer feedback is the only way to improve our cafe and we hope<br>
+            to bring the best quality of food to all the students at Sugarland.<br>
+            So if you have any concerns please feel free to list them down below<img class="custom" src="images/Team.jpg"
+                alt="Team" align="right" style="position:relative; right:600px;"><br>
+            or for more options please visit our <a href="contact.html"><strong>Contact</strong></a> page!</p>
+        <br>
+
+        <h4>Please enter CQC here!</h4>
+        <form method="post">
+            <label>Name:</label>
+            <input type="text" id="name" required>
+
+            <label>Phone</label>
+            <input type="tel" id="phone" required>
+            <br>
+            <label>Email:</label>
+            <input type="email" id="email" required>
+
+            <label>CQC:</label>
+            <input type="text" id="CQC" required>
+
+            <p>Preferred contact method:</p>
+            <div class="radio-group">
+                <input type="radio" id="contact_email" value="Email">
+                <label>Email</label>
+
+                <input type="radio" id="contact_phone" value="Phone">
+                <label>Phone</label>
+
+            </div>
+            <button type="submit"
+                style="width: 200px; height: 50px; position: relative; top: 50%; left: 20%">Submit</button>
+
+        </form>
+        <br>
+    </div>
+</body>
+
+<footer>
+    <p>&copy; 2024 SugarLand Cafe. All rights reserved.</p>
+    <p>Contact us at <a href="mailto:contact@thesugarlandcafe.com">contact@thesugarlandcafe.com</a>.</p>
+</footer>
+
+</html>
